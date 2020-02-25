@@ -1,0 +1,163 @@
+﻿<Window x:Class="WowSuite.Launcher.LoginForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:animation="clr-namespace:WowSuite.Launcher.Animation"
+        xmlns:libs1="clr-namespace:Samples.libs"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Authorization"
+        Width="500"
+        Height="470"
+        AllowsTransparency="True"
+        Background="{x:Null}"
+        Icon="Resources/favicon.ico"
+        Loaded="Window_Loaded"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <Window.Resources>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+        <ObjectDataProvider x:Key="ActivationModes"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="libs1:PopupActivationMode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="libs1:TaskbarIcon.TrayToolTipOpen"
+                      SourceName="tb" />
+    </Window.Triggers>
+
+    <Grid Margin="6,2,6,9">
+
+        <libs1:TaskbarIcon x:Name="tb"
+                           IconSource="111111.ico"
+                           Visibility="Collapsed" />
+
+        <Image x:Name="loginBG"
+               Width="485"
+               Height="456"
+               Margin="0,2,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Source="Resources/loginForm.png" />
+
+        <TextBox x:Name="loginBox"
+                 Width="308"
+                 Height="34"
+                 Margin="90,168,90,0"
+                 MaxLength = "16"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Top"
+                 FontFamily="/Launcher;component/Resources/#Blizzard"
+                 FontSize="16"
+                 SelectionBrush="#787878"
+                 Style="{StaticResource TextBoxStyle}"
+                 TextWrapping="Wrap" />
+
+        <PasswordBox x:Name="passwordBox"
+                     Width="308"
+                     Height="34"
+                     Margin="90,216,90,0"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     FontSize="16"
+                     PasswordChanged="passwordBox_PasswordChanged"
+                     PreviewKeyDown="passwordBox_PreviewKeyDown"
+                     SelectionBrush="#787878"
+                     Style="{StaticResource PasswordBoxStyle}" />
+
+        <Button x:Name="loginBtn"
+                Width="122"
+                Height="34"
+                Margin="90,298,276,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Click="loginBtn_Click"
+                Command="{Binding ClickCommand}"
+                CommandParameter="{Binding ElementName=passwordBox}"
+                Content="LOGIN"
+                FontFamily="Ebrima"
+                FontSize="15"
+                FontWeight="Bold"
+                Style="{StaticResource PlayButtonStyle}" />
+
+        <Button x:Name="forgotPassBtn"
+                Width="121"
+                Height="17"
+                Margin="277,257,90,0"
+                HorizontalAlignment="Center"
+                Click="forgotBtn_Click"
+                VerticalAlignment="Top"
+                Content="FORGOT PASSWORD?"
+                FontFamily="Ebrima"
+                FontSize="9"
+                FontWeight="Bold"
+                Style="{StaticResource TextButtonStyle}" />
+
+        <Button x:Name="regBtn"
+                Width="181"
+                Height="34"
+                Margin="217,298,90,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Content="REGISTRATION"
+                FontFamily="Ebrima"
+                FontSize="15"
+                FontWeight="Bold"
+                Style="{StaticResource RegButtonStyle}" Click="registrBtn_Click" />
+
+        <CheckBox x:Name="remember"
+                  Width="156"
+                  Height="17"
+                  Margin="90,256,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Content="REMEMBER ME"
+                  FontFamily="Ebrima"
+                  FontSize="11"
+                  FontWeight="Bold"
+                  Foreground="#d4f5ff"
+                  IsChecked="True" />
+
+        <animation:LoaderSpinner x:Name="initIndicator"
+                                 Width="30"
+                                 Height="30"
+                                 Margin="0,0,322,128"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Bottom" />
+
+        <Button x:Name="closeButton"
+                Width="21"
+                Height="21"
+                Margin="453,10,10,427"
+                Click="closeButton_Click"
+                Content="r"
+                FontSize="16"
+                Style="{StaticResource WindowBorderButtonStyle}"
+                ToolTip="Close"
+                ToolTipService.HorizontalOffset="-20"
+                ToolTipService.Placement="Bottom"
+                ToolTipService.ShowDuration="20000"
+                ToolTipService.VerticalOffset="10" />
+        <Image x:Name="logo"
+               Width="253"
+               Height="100"
+               Margin="175,31,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Source="Resources/logo_game.png" />
+
+        <Border Margin="1,1,2,0"
+                BorderBrush="#FF233F56"
+                BorderThickness="1" />
+        <Border Margin="0,0,1,-1"
+                BorderBrush="Black"
+                BorderThickness="1" />
+    </Grid>
+</Window>

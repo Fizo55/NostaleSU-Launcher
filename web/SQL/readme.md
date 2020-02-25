@@ -1,0 +1,1 @@
+# You need to execute the iconTemplate.sql multiple time cause sql server it's not the best to do a big insert and I don't have the time to clean this sql code 

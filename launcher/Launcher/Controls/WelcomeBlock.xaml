@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="WowSuite.Launcher.Controls.WelcomeBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="Welcome"
+             Width="390"
+             Height="300"
+             mc:Ignorable="d">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <SolidColorBrush Opacity="0.3"
+                             Color="Black" />
+        </Grid.Background>
+
+        <TextBlock x:Name="welcomeBlock"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontFamily="Ebrima"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   Text="Get it for free"
+                   TextWrapping="Wrap">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="7"
+                                  ShadowDepth="3"
+                                  Color="#FF0360A7" />
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <TextBlock x:Name="welcomeDescript"
+                   Margin="26,41,26,172"
+                   HorizontalAlignment="Center"
+                   FontFamily="Ebrima"
+                   FontSize="14"
+                   FontWeight="Bold"
+                   Foreground="#FF62CCF4"
+                   Text="Download the game client and join the great battle"
+                   TextWrapping="Wrap" />
+
+        <Button x:Name="welcomeBtn"
+                Width="338"
+                Height="66"
+                Margin="26,168,26,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Click="welcomeBtn_Click"
+                Content="Download the game"
+                FontFamily="Ebrima"
+                FontSize="25"
+                FontWeight="Bold"
+                Style="{StaticResource PlayButtonStyle}" />
+
+        <ComboBox x:Name="changeLang"
+                  Width="288"
+                  Height="28"
+                  Margin="48,117,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  FontFamily="Ebrima"
+                  FontSize="14"
+                  FontWeight="Bold"
+                  Loaded="changeLang_Loaded">
+            <ComboBoxItem Name="change"
+                          HorizontalAlignment="Center"
+                          Content="Game client language"
+                          FontFamily="Ebrima"
+                          FontWeight="Bold"
+                          IsSelected="True" FontSize="13" />
+            <ComboBoxItem Name="enUS"
+                          HorizontalAlignment="Center"
+                          Content="English"
+                          FontFamily="Ebrima"
+                          FontWeight="Bold" />
+        </ComboBox>
+
+        <Button x:Name="settingsBtn"
+                Width="390"
+                Margin="0,0,0,10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Click="settingsBtn_Click"
+                Content="The game is already installed ?"
+                FontFamily="Ebrima"
+                FontSize="15"
+                FontWeight="Bold"
+                Style="{StaticResource TextBtn}" />
+    </Grid>
+</UserControl>

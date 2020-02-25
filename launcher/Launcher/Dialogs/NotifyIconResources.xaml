@@ -1,0 +1,89 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Commands="clr-namespace:Samples.Commands"
+                    xmlns:tb="http://www.hardcodet.net/taskbar">
+    <LinearGradientBrush x:Key="MenuBackground"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#1d222d"
+                      Offset="1" />
+        <GradientStop Color="#2b374d"
+                      Offset="0.259" />
+    </LinearGradientBrush>
+
+    <Style TargetType="{x:Type ContextMenu}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Grid>
+                        <Border Background="{DynamicResource MenuBackground}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer
+                                Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}"
+                                Uid="ScrollViewer_9"
+                                CanContentScroll="True">
+                                <ItemsPresenter Margin="{TemplateBinding Padding}"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                KeyboardNavigation.DirectionalNavigation="Cycle" />
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ContextMenu x:Shared="false"
+                 x:Key="tbMenu">
+
+        <MenuItem Header="Clear Cache"
+                  Command="{Commands:ClearCache}">
+            <MenuItem.Icon>
+                <Image Width="16"
+                       Height="16"
+                       Source="/Resources/popUp/Images/contextMenu_uninstall_on.png" />
+            </MenuItem.Icon>
+        </MenuItem>
+
+        <MenuItem Header="Realmlist"
+                  Command="{Commands:HideSampleWindowCommand}"
+                  CommandParameter="{Binding}">
+            <MenuItem.Icon>
+                <Image Width="16"
+                       Height="16"
+                       Source="/Resources/popUp/Images/contextMenu_feedback.png" />
+            </MenuItem.Icon>
+        </MenuItem>
+
+        <MenuItem Header="Show WowSuite"
+                  Command="{Commands:HideSampleWindowCommand}"
+                  CommandParameter="{Binding}">
+            <MenuItem.Icon>
+                <Image Width="16"
+                       Height="16"
+                       Source="/Resources/popUp/Images/contextMenu_arrow_up.png" />
+            </MenuItem.Icon>
+        </MenuItem>
+
+        <MenuItem Header="Hide WowSuite"
+                  Command="{Commands:HideSampleWindowCommand}"
+                  CommandParameter="{Binding}">
+            <MenuItem.Icon>
+                <Image Width="16"
+                       Height="16"
+                       Source="/Resources/popUp/Images/contextMenu_arrow_down.png" />
+            </MenuItem.Icon>
+        </MenuItem>
+
+        <MenuItem Header="Exit WowSuite"
+                  Command="{Commands:HideSampleWindowCommand}"
+                  CommandParameter="{Binding}">
+            <MenuItem.Icon>
+                <Image Width="16"
+                       Height="16"
+                       Source="/Resources/popUp/Images/button_icon_cancel.png" />
+            </MenuItem.Icon>
+        </MenuItem>
+    </ContextMenu>
+</ResourceDictionary>

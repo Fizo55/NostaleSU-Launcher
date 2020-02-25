@@ -1,0 +1,271 @@
+﻿<UserControl x:Class="WowSuite.Launcher.Controls.NewsTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:animation="clr-namespace:WowSuite.Launcher.Animation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="NewsControl"
+             d:DesignHeight="404"
+             d:DesignWidth="950"
+             Loaded="NewsControl_Loaded"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+
+        <Storyboard x:Key="ChangeItems"
+                    AutoReverse="True">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="mainGrid"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7"
+                                      Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--  AA008BCB  -->
+
+        <Color x:Key="DefaultButton.Color">
+            #D8000000
+        </Color>
+        <Color x:Key="HoverButton.Color">
+            #009FE9
+        </Color>
+        <Color x:Key="PressedButton.Color">
+            #008BCB
+        </Color>
+    </UserControl.Resources>
+    <UserControl.OpacityMask>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="0" Color="White" />
+            <GradientStop Offset="1" Color="Black" />
+            <GradientStop Offset="0.881" Color="White" />
+        </LinearGradientBrush>
+    </UserControl.OpacityMask>
+
+    <UserControl.Triggers>
+    </UserControl.Triggers>
+
+    <Grid x:Name="LayoutRoot"
+          DataContext="{Binding Mode=OneWay,
+                                RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type UserControl}}}"
+          Opacity="0.8">
+        <!--<Grid.Effect>
+            <DropShadowEffect BlurRadius="5"
+                              Direction="-90"
+                              ShadowDepth="2" />
+        </Grid.Effect>-->
+
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.2"
+                                 Color="Black" />
+            </Grid.Background>
+
+            <Grid Name="NewsGrid">
+                <Grid Name="GridContent">
+
+                    <Grid x:Name="changeRealms"
+                          Margin="0,0,619,354">
+                        <Border Width="331"
+                                Height="50"
+                                Margin="-5,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="#59000000"
+                                BorderBrush="#FF233F56"
+                                BorderThickness="1" />
+                        <Border x:Name="hoverBorder"
+                                Width="50"
+                                Height="50"
+                                Margin="276,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                BorderBrush="#FF233F56"
+                                BorderThickness="1">
+                        </Border>
+                        <Button Name="reloadNewsList"
+                                Width="34"
+                                Height="34"
+                                Margin="284,8,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Click="NewsControl_Loaded"
+                                Style="{DynamicResource UpdateNewsButtonStyle}">
+                        </Button>
+
+                        <ComboBox x:Name="cbNews"
+                                  Width="262"
+                                  Height="50"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Cursor="Hand"
+                                  DisplayMemberPath="Value"
+                                  FontFamily="/Launcher;component/Resources/#Blizzard"
+                                  FontSize="16"
+                                  Loaded="ComboBox_Loaded"
+                                  SelectionChanged="ComboBox_SelectionChanged" Margin="6,0,0,0" />
+                    </Grid>
+
+                    <Grid x:Name="newsListGrid"
+                          Width="326"
+                          Margin="0,50,0,0"
+                          HorizontalAlignment="Left">
+                        <Border Margin="-5,-1,0,-3"
+                                Background="#7F000000"
+                                BorderBrush="#FF233F56"
+                                BorderThickness="1" />
+
+                        <ListBox x:Name="charList"
+                                 Width="326"
+                                 HorizontalAlignment="Left"
+                                 Background="{x:Null}"
+                                 BorderBrush="Transparent"
+                                 ItemContainerStyle="{StaticResource ListBoxItem}"
+                                 ItemTemplate="{DynamicResource CharTemplate}"
+                                 Padding="0,5,0,0"
+                                 SelectedIndex="0"
+                                 VirtualizingPanel.ScrollUnit="Pixel">
+                            <ListBox.Resources>
+                                <DataTemplate x:Key="CharTemplate">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image x:Name="listCharPortait"
+                                               Width="80"
+                                               Height="50"
+                                               Source="{Binding ImageLink}"
+                                               Stretch="Fill" />
+                                        <StackPanel Grid.Column="1"
+                                                    MaxWidth="174"
+                                                    MaxHeight="100"
+                                                    Margin="-5,25,0,25"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top">
+                                            <StackPanel HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top"
+                                                        Orientation="Horizontal"
+                                                        TextBlock.FontWeight="Bold">
+                                                <TextBlock x:Name="nameBlock"
+                                                           Text="{Binding RealmsFriendly}"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           TextWrapping="Wrap">
+                                                    <TextBlock.Foreground>
+                                                        <SolidColorBrush Opacity="0.6"
+                                                                         Color="#FFC1C1C1" />
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <StackPanel HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top"
+                                                        Orientation="Horizontal">
+                                                <TextBlock FontFamily="/Launcher;component/Resources/#Blizzard"
+                                                           FontSize="14"
+                                                           Foreground="White"
+                                                           Text="{Binding Title,
+                                                                          FallbackValue=Title}"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           TextWrapping="Wrap" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.Resources>
+                        </ListBox>
+                    </Grid>
+
+                    <ScrollViewer x:Name="newsContent"
+                                  Margin="331,0,0,0"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="102*" />
+                                <RowDefinition Height="117*" />
+                                <RowDefinition Height="185*" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="realmName"
+                                       Margin="41,51,0,35"
+                                       Text="{Binding ElementName=charList,
+                                                      Path=SelectedItem.RealmsFriendly}"
+                                       TextTrimming="CharacterEllipsis"
+                                       TextWrapping="Wrap" FontSize="15">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Opacity="0.5"
+                                                     Color="#FFDADADA" />
+                                </TextBlock.Foreground>
+                            </TextBlock>
+
+                            <TextBlock Name="newsHeader"
+                                       MaxWidth="460"
+                                       Margin="38,71,0,0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       Text="{Binding ElementName=charList,
+                                                      Path=SelectedItem.Title}"
+                                       TextBlock.FontFamily="Arial"
+                                       TextBlock.FontSize="25.333"
+                                       TextBlock.Foreground="#FFF0E7E7"
+                                       TextTrimming="CharacterEllipsis"
+                                       TextWrapping="Wrap" />
+
+                            <TextBlock x:Name="realmDate"
+                                       Grid.Row="1"
+                                       Margin="41,1,0,100"
+                                       Text="{Binding ElementName=charList,
+                                                      Path=SelectedItem.Date}"
+                                       TextTrimming="CharacterEllipsis"
+                                       TextWrapping="Wrap">
+                                <TextBlock.Foreground>
+                                    <SolidColorBrush Opacity="0.5"
+                                                     Color="#FFDADADA" />
+                                </TextBlock.Foreground>
+                            </TextBlock>
+
+                            <Image Name="newsImage"
+                                   Grid.Row="1"
+                                   MaxWidth="950"
+                                   MaxHeight="700"
+                                   Margin="39,22,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Source="{Binding ElementName=charList,
+                                                    Path=SelectedItem.ImageLink}"
+                                   StretchDirection="DownOnly">
+                                <Image.Effect>
+                                    <DropShadowEffect BlurRadius="10"
+                                                      Direction="-90"
+                                                      ShadowDepth="4" />
+                                </Image.Effect>
+                            </Image>
+
+                            <TextBlock Name="newsBody"
+                                       Grid.Row="2"
+                                       Width="auto"
+                                       Height="Auto"
+                                       MaxWidth="850"
+                                       Margin="50,56,0,0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       Text="{Binding ElementName=charList,
+                                                      Path=SelectedItem.Text}"
+                                       TextBlock.FontFamily="Arial"
+                                       TextBlock.FontSize="15"
+                                       TextBlock.Foreground="#FFA9BFAA"
+                                       TextTrimming="CharacterEllipsis"
+                                       TextWrapping="Wrap" />
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <animation:LoaderSpinner x:Name="initIndicator"
+                                 Width="30"
+                                 Height="30"
+                                 Margin="0,0,10,10"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Bottom" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,318 @@
+﻿<UserControl x:Class="WowSuite.Launcher.Controls.NewsRotator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="NewsControl"
+             d:DesignHeight="263"
+             MouseLeftButtonDown="NewsControl_MouseLeftButtonDown"
+             MouseEnter="Slider_MouseEnter"
+             MouseLeave="Slider_MouseLeave"
+             mc:Ignorable="d" Width="530">
+
+    <UserControl.Resources>
+
+        <Storyboard x:Key="HoverEffectEnter">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="leftButton"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rightButton"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="HoverEffectLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="0.9" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="leftButton"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rightButton"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ChangeItems"
+                    AutoReverse="True">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
+                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                      Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--  AA008BCB  -->
+
+        <Color x:Key="DefaultButton.Color">
+            #D8000000
+        </Color>
+        <Color x:Key="HoverButton.Color">
+            #009FE9
+        </Color>
+        <Color x:Key="PressedButton.Color">
+            #008BCB
+        </Color>
+        <SolidColorBrush x:Key="HoverButton.Brush"
+                         Color="{StaticResource HoverButton.Color}" />
+        <SolidColorBrush x:Key="DefaultButton.Brush"
+                         Color="{StaticResource DefaultButton.Color}" />
+        <SolidColorBrush x:Key="PressedButton.Brush"
+                         Color="{StaticResource PressedButton.Color}" />
+
+        <Style x:Key="ChooseLeftButton"
+               BasedOn="{x:Null}"
+               TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="#FFFFFFFF" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="MouseHover">
+                                <ColorAnimation Duration="0:0:0.1"
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="Background.Color"
+                                                To="{StaticResource HoverButton.Color}" />
+                            </Storyboard>
+                            <Storyboard x:Key="MouseLeave">
+                                <ColorAnimation Duration="0:0:0.1"
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="Background.Color"
+                                                To="{StaticResource DefaultButton.Color}" />
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid x:Name="Grid"
+                              Margin="0,0,0,0"
+                              Opacity="1">
+                            <Border x:Name="Border"
+                                    Margin="0,2,0,0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{StaticResource DefaultButton.Brush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="4,0,0,4"
+                                    Padding="{TemplateBinding Padding}" />
+                            <ContentPresenter x:Name="ContentText"
+                                              Margin="2"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource HoverButton.Brush}" />
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MouseHover}" />
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MouseLeave}" />
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource PressedButton.Brush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Grid" Property="Opacity" Value="0.20" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="True" />
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ChooseRightButton"
+               BasedOn="{x:Null}"
+               TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="#FFFFFFFF" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="MouseHover">
+                                <ColorAnimation Duration="0:0:0.1"
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="Background.Color"
+                                                To="{StaticResource HoverButton.Color}" />
+                            </Storyboard>
+                            <Storyboard x:Key="MouseLeave">
+                                <ColorAnimation Duration="0:0:0.1"
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="Background.Color"
+                                                To="{StaticResource DefaultButton.Color}" />
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid x:Name="Grid"
+                              Margin="0,0,0,0"
+                              Opacity="1">
+                            <Border x:Name="Border"
+                                    Margin="0,2,0,0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="{StaticResource DefaultButton.Brush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="0,4,4,0"
+                                    Padding="{TemplateBinding Padding}" />
+                            <ContentPresenter x:Name="ContentText"
+                                              Margin="2"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource HoverButton.Brush}" />
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MouseHover}" />
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MouseLeave}" />
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource PressedButton.Brush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Grid" Property="Opacity" Value="0.20" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="True" />
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.OpacityMask>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="0" Color="White" />
+            <GradientStop Offset="1" Color="Black" />
+            <GradientStop Offset="0.881" Color="White" />
+        </LinearGradientBrush>
+    </UserControl.OpacityMask>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource HoverEffectEnter}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource HoverEffectLeave}" />
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid x:Name="LayoutRoot"
+          DataContext="{Binding Mode=OneWay,
+                                RelativeSource={RelativeSource FindAncestor,
+                                                               AncestorType={x:Type UserControl}}}"
+          Opacity="0.8">
+        <!--<Grid.Effect>
+            <DropShadowEffect BlurRadius="5"
+                              Direction="-90"
+                              ShadowDepth="2" />
+        </Grid.Effect>-->
+        <Grid x:Name="mainGrid">
+            <!--<Image x:Name="defaultNewsImage"
+                Source="pack://application:,,,/Resources/1.jpg" />-->
+            <Image x:Name="newsImage"
+                   Source="{Binding CurrentNewsItem.ImageLink}" />
+            <Border Height="70"
+                    VerticalAlignment="Bottom">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#00000000" />
+                        <GradientStop Offset="1" Color="Black" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <StackPanel x:Name="panelText"
+                        Height="79"
+                         VerticalAlignment="Bottom">
+
+                <TextBlock x:Name="newsHead"
+                           FontFamily="Vendara"
+                           FontSize="30"
+                           Foreground="{Binding Foreground,
+                                                ElementName=NewsControl}"
+                           Padding="15,0"
+                           Text="{Binding CurrentNewsItem.Title}"
+                            TextTrimming="CharacterEllipsis" />
+
+                <TextBlock x:Name="newsBody"
+                           FontFamily="Vendara"
+                           FontSize="13"
+                           Opacity="0"
+                           Foreground="{Binding Foreground,
+                                                ElementName=NewsControl}"
+                           Padding="20,10"
+                           Text="{Binding CurrentNewsItem.Text}"
+                           TextTrimming="CharacterEllipsis"
+                           VerticalAlignment="Bottom" />
+            </StackPanel>
+        </Grid>
+
+        <Border BorderBrush="Black"
+                BorderThickness="1"
+                SnapsToDevicePixels="True"
+                Effect="{StaticResource WindowDropShadowEffectKey}" />
+        <Border Margin="1"
+                BorderBrush="#FF233F56"
+                BorderThickness="1"
+                SnapsToDevicePixels="True" />
+
+        <StackPanel Height="28"
+                    Margin="0,10,41,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+            <Button x:Name="leftButton"
+                    Width="31"
+                    BorderThickness="0"
+                    Click="PreviousNewsItem"
+                    ClipToBounds="True"
+                    Content="&lt;"
+                    Cursor="Hand"
+                    Focusable="False"
+                    FontFamily="Consolas"
+                    FontSize="21"
+                    IsHitTestVisible="True"
+                    IsTabStop="False"
+                    RenderTransformOrigin="1,1"
+                    Style="{DynamicResource ChooseLeftButton}" />
+        </StackPanel>
+
+        <StackPanel Height="28"
+                    Margin="0,10,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+            <Button x:Name="rightButton"
+                    Width="31"
+                    BorderThickness="0"
+                    Click="NextNewsItem"
+                    ClipToBounds="True"
+                    Content="&gt;"
+                    Cursor="Hand"
+                    Focusable="False"
+                    FontFamily="Consolas"
+                    FontSize="21"
+                    IsHitTestVisible="True"
+                    IsTabStop="False"
+                    RenderTransformOrigin="1,1"
+                    Style="{DynamicResource ChooseRightButton}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

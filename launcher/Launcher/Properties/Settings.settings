@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WowSuite.Launcher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="reg_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/index</Value>
+    </Setting>
+    <Setting Name="forum_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/forum/</Value>
+    </Setting>
+    <Setting Name="acc_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/</Value>
+    </Setting>
+    <Setting Name="site_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/</Value>
+    </Setting>
+    <Setting Name="patchlist" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/update/patchlist.txt</Value>
+    </Setting>
+    <Setting Name="world_port" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">4001</Value>
+    </Setting>
+    <Setting Name="mysql_port" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="world_ip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/</Value>
+    </Setting>
+    <Setting Name="ban_url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/ban.txt</Value>
+    </Setting>
+    <Setting Name="api_url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/index.php</Value>
+    </Setting>
+    <Setting Name="skey_api" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">asc312f8826gieb51504483ee8c19ta2</Value>
+    </Setting>
+    <Setting Name="update_folder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/update/</Value>
+    </Setting>
+    <Setting Name="mysql_ip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/</Value>
+    </Setting>
+    <Setting Name="server_name_wotlk" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NostaleSU</Value>
+    </Setting>
+    <Setting Name="forg_pass_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/index.php?do=lostpassword</Value>
+    </Setting>
+    <Setting Name="shop_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/shop/</Value>
+    </Setting>
+    <Setting Name="down_client_ru" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/client_ru/</Value>
+    </Setting>
+    <Setting Name="down_client_en" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/client_en/</Value>
+    </Setting>
+    <Setting Name="down_client_ru_patch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/client_ru/patchlist.txt</Value>
+    </Setting>
+    <Setting Name="down_client_en_patch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://ancelloan.eu/web/launcher/client_en/patchlist.txt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

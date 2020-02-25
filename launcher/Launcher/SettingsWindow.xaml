@@ -1,0 +1,124 @@
+﻿<Window x:Class="WowSuite.Launcher.SettingsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:libs1="clr-namespace:Samples.libs" xmlns:sys="clr-namespace:System;assembly=mscorlib" Title="Settings" Width="930" Height="663" AllowsTransparency="True" Background="{x:Null}" Icon="Resources/favicon.ico" Loaded="Window_Loaded" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ObjectDataProvider x:Key="ActivationModes" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="libs1:PopupActivationMode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="libs1:TaskbarIcon.TrayToolTipOpen" SourceName="tb" />
+    </Window.Triggers>
+    <Grid Margin="6">
+        <Image Width="919" Height="652" Margin="0,0,-1,-1" HorizontalAlignment="Left" VerticalAlignment="Top" Source="Resources/setForm.png" />
+        <libs1:TaskbarIcon x:Name="tb" IconSource="111111.ico" Visibility="Collapsed" />
+        <TabControl x:Name="Settings" Margin="2,64,0,57" HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" TabStripPlacement="Left">
+            <TabItem x:Name="generalSet" Width="218" Margin="0,41,0,-23" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource SettingsTabItem}">
+                <TabItem.Header>
+                    <Grid Width="206" Height="27">
+                        <Image Width="16" Height="16" Margin="1,5,189,6" Source="Resources/icon_general_settings.png" />
+                        <TextBlock x:Name="tabMenu" Margin="22,2,1,5" FontSize="15" Style="{StaticResource TabItemText}" Text="General Settings" />
+                    </Grid>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock x:Name="labelGeneral" Width="255" Margin="45,55,390,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="White" Text="General Settings" />
+                    <TextBlock x:Name="appLang" Width="253" Margin="63,93,374,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="LANGUAGE" />
+                    <Grid Margin="54,125,484,371" Background="#FF121922">
+                        <Border Margin="0,-1,0,0" BorderBrush="#FF2D353F" BorderThickness="1" />
+                        <ComboBox x:Name="changeLang" Width="152" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Loaded="changeLang_Loaded">
+                            <ComboBoxItem Name="enUS" Content="English(EN)" Selected="ComboBoxItem_Selected" />
+                            <ComboBoxItem Name="frFRA" Content="Français(FRA)" Selected="ComboBoxItem_Selected" />
+                            <ComboBoxItem Name="esESP" Content="Español(ESP)" Selected="ComboBoxItem_Selected" />
+                            <ComboBoxItem Name="itITA" Content="Italiano(ITA)" Selected="ComboBoxItem_Selected" />
+                            <ComboBoxItem Name="deDEU" Content="Deutsch(DEU)" Selected="ComboBoxItem_Selected" />
+                            <ComboBoxItem Name="czCZ" Content="Český(CZ)" Selected="ComboBoxItem_Selected" />
+                            <ComboBoxItem Name="trTR" Content="Türk(TR)" Selected="ComboBoxItem_Selected" />
+                            <ComboBoxItem Name="ruRU" Content="Русский(RU)" Selected="ComboBoxItem_Selected" />
+                        </ComboBox>
+                    </Grid>
+                    <CheckBox x:Name="copyApp" Width="521" Height="20" Margin="54,176,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Allow parallel run multiple copies of the program" FontSize="14" Foreground="#FFBDBDBD" Loaded="copyApp_Loaded" FontFamily="Ebrima" />
+                    <TextBlock x:Name="settingsApp" Margin="63,224,557,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="SETTINGS" />
+                    <CheckBox x:Name="FullScreen" Content="Full Screen" HorizontalAlignment="Left" Margin="64,266,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                    <Grid>
+                        <TextBlock x:Name="environmentTextBlock" Margin="190,224,390,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="ENVIRONMENT" />
+                        <RadioButton x:Name="DirectX" Content="DirectX" HorizontalAlignment="Left" Margin="190,266,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <RadioButton x:Name="OpenGL" Content="OpenGL" HorizontalAlignment="Left" Margin="190,290,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                    </Grid>
+                    <Grid>
+                        <TextBlock x:Name="screenSizeTextBlock" Margin="361,224,238,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="SCREEN SIZE" />
+                        <RadioButton x:Name="size" Content="1024*700" HorizontalAlignment="Left" Margin="362,266,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <RadioButton x:Name="size1" Content="1024*768" HorizontalAlignment="Left" Margin="362,290,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <RadioButton x:Name="size2" Content="1280*800" HorizontalAlignment="Left" Margin="362,314,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <RadioButton x:Name="size3" Content="1280*1024" HorizontalAlignment="Left" Margin="362,338,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <RadioButton x:Name="size4" Content="1440*900" HorizontalAlignment="Left" Margin="362,362,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <RadioButton x:Name="size5" Content="1680*1050" HorizontalAlignment="Left" Margin="362,386,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                    </Grid>
+                    <Grid>
+                        <TextBlock x:Name="screenBitTextBlock" Margin="515,224,92,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="SCREEN BIT" />
+                        <RadioButton x:Name="bit" Content="16" HorizontalAlignment="Left" Margin="516,266,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <RadioButton x:Name="bit1" Content="32" HorizontalAlignment="Left" Margin="516,290,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                    </Grid>
+                    <Grid>
+                        <TextBlock x:Name="fpsTextBlock" Margin="54,333,469,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="FPS (Frame Per Second)" />
+                        <Slider x:Name="FpsSlider"  HorizontalAlignment="Left" Margin="54,368,0,0" VerticalAlignment="Top" Width="200" TickFrequency="1" IsSnapToTickEnabled="True" Maximum="7" Minimum="1" />
+                    </Grid>
+                    <Grid>
+                        <TextBlock x:Name="soundTextBlock" Margin="54,409,516,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="SOUND SETTING" />
+                        <CheckBox x:Name="FxOn" Content="Fx On" HorizontalAlignment="Left" Margin="54,444,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <CheckBox x:Name="Bgm" Content="BGM On" HorizontalAlignment="Left" Margin="131,444,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                        <CheckBox x:Name="D" Content="3D On" HorizontalAlignment="Left" Margin="224,444,0,0" VerticalAlignment="Top" Foreground="#FFBDBDBD" FontFamily="Ebrima" FontSize="15" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="userSet" Width="218" Margin="0,28,0,-10" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource SettingsTabItem}">
+                <TabItem.Header>
+                    <Grid Width="206" Height="27">
+                        <Image Width="16" Height="16" Margin="1,5,189,6" Source="Resources/icon_menusignout_on.png" />
+                        <TextBlock x:Name="tabMenu1" Margin="22,2,1,5" FontSize="15" Style="{StaticResource TabItemText}" Text="User Settings" />
+                    </Grid>
+                </TabItem.Header>
+                <Grid>
+                    <Grid>
+                        <Button x:Name="exitBtn" Width="126" Height="34" Margin="64,271,500,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="exitBtn_Click" Command="{Binding ClickCommand}" CommandParameter="{Binding ElementName=passwordBox}" Content="Exit" FontSize="15" Style="{StaticResource PlayButtonStyle}" />
+                        <TextBlock x:Name="labelAutoLogin" Width="150" Margin="47,54,493,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="White" Text="Autologin" />
+                        <TextBlock x:Name="settingsLabelTooltip2" Width="640" Margin="47,78,3,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Text="Save your game data, you can enter the game without entering a username and password" />
+                        <TextBlock x:Name="EnterLogin" Width="194" Margin="47,134,449,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="ENTER LOGIN" />
+                        <TextBlock x:Name="EnterPass" Width="194" Margin="47,198,449,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="ENTER PASSWORD" />
+                        <TextBox x:Name="textBoxLogin" Width="194" Height="28" MaxLength="16" Margin="47,160,449,0" HorizontalAlignment="Center" VerticalAlignment="Top" GotFocus="textBoxLogin_GotFocus" SelectionBrush="#787878" Style="{StaticResource TextBoxStyle}" TextWrapping="Wrap">
+                        </TextBox>
+                        <PasswordBox x:Name="passwordBox" Width="194" Height="28" Margin="47,221,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" GotFocus="passwordBox_GotFocus" PasswordChanged="passwordBox_PasswordChanged" SelectionBrush="#787878" Style="{StaticResource PasswordBoxStyle}" />
+                        <TextBlock x:Name="result" Margin="0,0,0,6" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF90E9FD" Text="******" Visibility="Hidden" />
+                    </Grid>
+                    <Label x:Name="settingsLabelTooltip" Width="677" Margin="13,471,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="* Game data is stored locally on your machine. Only you can have access to them" Foreground="White" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="gameLoc" Width="218" Margin="-1,14,0,3" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource SettingsTabItem}">
+                <TabItem.Header>
+                    <Grid Width="206" Height="27">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="51*" />
+                            <ColumnDefinition Width="52*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Width="20" Height="20" Margin="-1,4,83,3" Source="Resources/contextMenu_createshortcut_on.png" />
+                        <TextBlock x:Name="tabMenu2" Grid.ColumnSpan="2" Margin="22,3,1,4" FontSize="15" Style="{StaticResource TabItemText}" Text="Game Location" />
+                    </Grid>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock x:Name="labelGame" Width="309" Margin="45,55,336,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="White" Text="Game Location" />
+                    <TextBox x:Name="location1" Width="309" Height="28" Margin="45,123,336,0" HorizontalAlignment="Center" VerticalAlignment="Top" GotFocus="location1_GotFocus" SelectionBrush="#787878" Style="{StaticResource TextBoxStyle}" Text="Specify the path to Nostale game" TextWrapping="Wrap">
+                    </TextBox>
+                    <TextBlock x:Name="game1" Width="194" Margin="45,91,451,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" Foreground="#FF858484" Text="NOSTALE GAME" />
+                    <Button x:Name="client1Btn" Margin="372,123,220,373" Click="client1Btn_Click" Content="Change" FontFamily="Ebrima" FontSize="15" FontWeight="Bold" Style="{StaticResource RegButtonStyle}" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="saveSettingsButton" Width="100" Height="32" Margin="799,593,19,0" HorizontalAlignment="Center" VerticalAlignment="Top" Click="SaveSettingsButton_Click" Content="Save" FontFamily="Ebrima" FontSize="15" FontWeight="Bold" Style="{StaticResource PlayButtonStyle}" />
+        <Button x:Name="closeButtonSettings" Width="19" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="closeButtonSettings_Click" Content="r" FontSize="16" Style="{StaticResource WindowBorderButtonStyle}" ToolTip="Close" ToolTipService.HorizontalOffset="-20" ToolTipService.Placement="Bottom" ToolTipService.ShowDuration="20000" ToolTipService.VerticalOffset="10" />
+        <TextBlock x:Name="SettingsLabel" Width="140" Height="24" Margin="23,17,755,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="White" Text="Settings" />
+        <Button x:Name="clearSetting" Margin="230,593,507,26" Click="clearSetting_Click" Content="Reset Settings" FontFamily="Ebrima" FontSize="15" FontWeight="Bold" Style="{StaticResource RegButtonStyle}">
+        </Button>
+        <Border Margin="1,1,0,0" BorderBrush="#FF233F56" BorderThickness="1" />
+        <Border Margin="0,0,-1,-1" BorderBrush="Black" BorderThickness="1" />
+    </Grid>
+</Window>

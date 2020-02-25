@@ -1,0 +1,85 @@
+﻿<Window x:Class="WowSuite.Launcher.Dialogs.PopupDialogReset"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:libs1="clr-namespace:Samples.libs"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Are you sure?"
+        Width="410"
+        Height="160"
+        AllowsTransparency="True"
+        Background="{x:Null}"
+        Icon="../Resources/icon.ico"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ShowInTaskbar="False">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ObjectDataProvider x:Key="ActivationModes"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="libs1:PopupActivationMode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="libs1:TaskbarIcon.TrayToolTipOpen"
+                      SourceName="tb" />
+    </Window.Triggers>
+
+    <Grid Margin="6">
+        <Border Background="#FFFDFDFD"
+                Effect="{StaticResource WindowDropShadowEffectKey}" />
+
+        <libs1:TaskbarIcon x:Name="tb"
+                           IconSource="../Resources/icon.ico"
+                           Visibility="Collapsed" />
+
+        <Image Width="398"
+               Height="148"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Source="../Resources/popUp/popup.png" />
+
+        <Button x:Name="closeBtn"
+                Width="19"
+                Height="20"
+                Margin="0,5,7,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="closeBtn_Click"
+                Content="r"
+                FontSize="16"
+                Style="{StaticResource WindowBorderButtonStyle}"
+                ToolTip="Close"
+                ToolTipService.HorizontalOffset="-20"
+                ToolTipService.Placement="Bottom"
+                ToolTipService.ShowDuration="20000"
+                ToolTipService.VerticalOffset="10" />
+
+        <Button x:Name="restartBtn"
+                Width="144"
+                Height="30"
+                Margin="27,100,227,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Content="Restart Now"
+                FontSize="12"
+                Style="{StaticResource PlayButtonStyle}" Click="restartBtn_Click" FontFamily="Ebrima" FontWeight="Bold" />
+
+        <Button x:Name="restartLaterBtn"
+                Margin="198,100,80,18"
+                Click="restartLaterBtn_Click"
+                Content="Restart Later"
+                Style="{StaticResource RegButtonStyle}" FontFamily="Ebrima" FontSize="12" />
+        <TextBlock x:Name="popupMessage" Width="350"
+                   Height="70"
+                   Margin="27,25,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Foreground="#FFE8E8E8"
+                   Text="WowSuite must be restarted for the changes to take effect. Restart Now?"
+                   TextWrapping="Wrap" FontSize="15" />
+    </Grid>
+</Window>

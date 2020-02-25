@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{357C7CC3-D87D-4841-B86A-26BB9E7FCB9E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WowSuite.Launcher</RootNamespace>
+    <AssemblyName>Launcher</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Launcher</ProductName>
+    <PublisherName>SyntaxWEB</PublisherName>
+    <SuiteName>OneLife Launcher</SuiteName>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>
+    </ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DiscordRPC, Version=1.0.121.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DiscordRichPresence.1.0.121\lib\net35\DiscordRPC.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Animation\AnimatedImageControl.xaml.cs">
+      <DependentUpon>AnimatedImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animation\ButtonLoader.xaml.cs">
+      <DependentUpon>ButtonLoader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animation\LoaderSpinner.xaml.cs">
+      <DependentUpon>LoaderSpinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpressNewsItemViewModel.cs" />
+    <Compile Include="libs\BalloonIcon.cs" />
+    <Compile Include="libs\Interop\BalloonFlags.cs" />
+    <Compile Include="libs\Interop\IconDataMembers.cs" />
+    <Compile Include="libs\Interop\IconState.cs" />
+    <Compile Include="libs\Interop\MouseEvent.cs" />
+    <Compile Include="libs\Interop\NotifyCommand.cs" />
+    <Compile Include="libs\Interop\NotifyIconData.cs" />
+    <Compile Include="libs\Interop\NotifyIconVersion.cs" />
+    <Compile Include="libs\Interop\Point.cs" />
+    <Compile Include="libs\Interop\TrayInfo.cs" />
+    <Compile Include="libs\Interop\WinApi.cs" />
+    <Compile Include="libs\Interop\WindowClass.cs" />
+    <Compile Include="libs\Interop\WindowMessageSink.cs" />
+    <Compile Include="libs\NotifyIconViewModel.cs" />
+    <Compile Include="libs\PopupActivationMode.cs" />
+    <Compile Include="libs\RoutedEventHelper.cs" />
+    <Compile Include="libs\TaskbarIcon.cs" />
+    <Compile Include="libs\TaskbarIcon.Declarations.cs" />
+    <Compile Include="libs\Util.cs" />
+    <Compile Include="Dialogs\PopupDialogUpdate.xaml.cs">
+      <DependentUpon>PopupDialogUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\CloseWindowCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\HideSampleWindowCommand.cs" />
+    <Compile Include="Commands\ShowSampleWindowCommand.cs" />
+    <Compile Include="Config\AppFiles.cs" />
+    <Compile Include="Config\AppFolder.cs" />
+    <Compile Include="Config\AuthData.cs" />
+    <Compile Include="Config\LocalConfiguration.cs" />
+    <Compile Include="Config\WowLauncherFolder.cs" />
+    <Compile Include="Controls\NewsRotator.xaml.cs">
+      <DependentUpon>NewsRotator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewsTab.xaml.cs">
+      <DependentUpon>NewsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WelcomeBlock.xaml.cs">
+      <DependentUpon>WelcomeBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FancyBalloon.xaml.cs">
+      <DependentUpon>FancyBalloon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\AddressSet.cs" />
+    <Compile Include="Logic\IpPortConfig.cs" />
+    <Compile Include="Logic\_Enums\LauncherState.cs" />
+    <Compile Include="Logic\_EventArgs\LauncherStateEventArgs.cs" />
+    <Compile Include="Logic\_EventArgs\LoadTextEventArgs.cs" />
+    <Compile Include="Logic\LauncherLogic.cs" />
+    <Compile Include="Logic\_Enums\LauncherLoadingState.cs" />
+    <Compile Include="Logic\_EventArgs\LoadEventArgs.cs" />
+    <Compile Include="Logic\Updating\ProgressEventArgs.cs" />
+    <Compile Include="LoginDialog.xaml.cs">
+      <DependentUpon>LoginDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PopupDialogReset.xaml.cs">
+      <DependentUpon>PopupDialogReset.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PopupDialog.xaml.cs">
+      <DependentUpon>PopupDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KeyNotFound.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentProvider.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Updating\UpdateState.cs" />
+    <Compile Include="Logic\Updating\UpdateStateEventArgs.cs" />
+    <Compile Include="Utils\EncDec.cs" />
+    <Compile Include="Utils\INI.cs" />
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Utils\XmlHelper.cs" />
+    <Compile Include="WebClientFactory.cs" />
+    <Compile Include="Logic\Updating\WowUpdater.cs" />
+    <None Include="app.manifest" />
+    <None Include="libs\Diagrams\TaskbarIcon Overview.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Include="Animation\ButtonLoader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Animation\LoaderSpinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NewsTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WelcomeBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\FancyBalloon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\NotifyIconResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="Resources\BlizzardBol.ttf" />
+    <Resource Include="Resources\BlizzardReg.ttf" />
+    <None Include="WowSuite.Launcher_TemporaryKey.pfx" />
+    <None Include="WpfApplication1_TemporaryKey.pfx" />
+    <Page Include="Animation\AnimatedImageControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\PopupDialogUpdate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NewsRotator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Dialogs\PopupDialogReset.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\PopupDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dictionaries\Tooltip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dictionaries\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dictionaries\Effects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dictionaries\Progressbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dictionaries\Scroll.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="111111.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 с пакетом обновления 1 %28SP1%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\online.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\online_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Constants\WowSuite.Constants.csproj">
+      <Project>{BB0A3D89-24EB-43B6-84D1-7A52A1758F43}</Project>
+      <Name>WowSuite.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WowSuite.Language\WowSuite.Language.csproj">
+      <Project>{5c58430d-f568-41d7-be1a-bee167937089}</Project>
+      <Name>WowSuite.Language</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WowSuite.Utils\WowSuite.Utils.csproj">
+      <Project>{7d8b2d07-bea9-4d01-8182-27cb50e61a40}</Project>
+      <Name>WowSuite.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pid" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\play_hover.png" />
+    <Resource Include="Resources\play_no_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\statForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\searchBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\searchBtn.png" />
+    <Resource Include="Resources\searchBtnHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\charBg\1-0.jpg" />
+    <Resource Include="Resources\charBg\1-1.jpg" />
+    <Resource Include="Resources\charBg\10-0.jpg" />
+    <Resource Include="Resources\charBg\10-1.jpg" />
+    <Resource Include="Resources\charBg\11-0.jpg" />
+    <Resource Include="Resources\charBg\11-1.jpg" />
+    <Resource Include="Resources\charBg\2-0.jpg" />
+    <Resource Include="Resources\charBg\2-1.jpg" />
+    <Resource Include="Resources\charBg\3-0.jpg" />
+    <Resource Include="Resources\charBg\3-1.jpg" />
+    <Resource Include="Resources\charBg\4-0.jpg" />
+    <Resource Include="Resources\charBg\4-1.jpg" />
+    <Resource Include="Resources\charBg\5-0.jpg" />
+    <Resource Include="Resources\charBg\5-1.jpg" />
+    <Resource Include="Resources\charBg\6-0.jpg" />
+    <Resource Include="Resources\charBg\6-1.jpg" />
+    <Resource Include="Resources\charBg\7-0.jpg" />
+    <Resource Include="Resources\charBg\7-1.jpg" />
+    <Resource Include="Resources\charBg\8-0.jpg" />
+    <Resource Include="Resources\charBg\8-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\charBg\22-0.jpg" />
+    <Resource Include="Resources\charBg\22-1.jpg" />
+    <Resource Include="Resources\charBg\24-0.jpg" />
+    <Resource Include="Resources\charBg\24-1.jpg" />
+    <Resource Include="Resources\charBg\9-0.jpg" />
+    <Resource Include="Resources\charBg\9-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\inventory\0.png" />
+    <Resource Include="Resources\inventory\1.png" />
+    <Resource Include="Resources\inventory\10.png" />
+    <Resource Include="Resources\inventory\11.png" />
+    <Resource Include="Resources\inventory\12.png" />
+    <Resource Include="Resources\inventory\13.png" />
+    <Resource Include="Resources\inventory\14.png" />
+    <Resource Include="Resources\inventory\15.png" />
+    <Resource Include="Resources\inventory\16.png" />
+    <Resource Include="Resources\inventory\17.png" />
+    <Resource Include="Resources\inventory\18.png" />
+    <Resource Include="Resources\inventory\2.png" />
+    <Resource Include="Resources\inventory\3.png" />
+    <Resource Include="Resources\inventory\4.png" />
+    <Resource Include="Resources\inventory\5.png" />
+    <Resource Include="Resources\inventory\6.png" />
+    <Resource Include="Resources\inventory\7.png" />
+    <Resource Include="Resources\inventory\8.png" />
+    <Resource Include="Resources\inventory\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\inventory\noteImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\Close.png" />
+    <Resource Include="Resources\popUp\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\Icons\Bulb.ico" />
+    <Resource Include="Resources\popUp\Icons\Computers.ico" />
+    <Resource Include="Resources\popUp\Icons\Error.ico" />
+    <Resource Include="Resources\popUp\Icons\Inactive.ico" />
+    <Resource Include="Resources\popUp\Icons\NetDrives.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\taskPopup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\Images\button_icon_cancel.png" />
+    <Resource Include="Resources\popUp\Images\contextMenu_install_on.png" />
+    <Resource Include="Resources\popUp\Images\contextMenu_managecharacter_on.png" />
+    <Resource Include="Resources\popUp\Images\contextMenu_repair_on.png" />
+    <Resource Include="Resources\popUp\Images\icon_setting_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\Images\contextMenu_arrow_down.png" />
+    <Resource Include="Resources\popUp\Images\contextMenu_arrow_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\Images\contextMenu_feedback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\Images\contextMenu_uninstall_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\contextMenu_redeemcode_on.png" />
+    <Resource Include="Resources\contextMenu_uninstall_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\setForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\contextMenu_createshortcut_on.png" />
+    <Resource Include="Resources\icon_menusignout_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\contextMenu_checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\contextMenu_border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\loginForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\errorLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\contextMenu_helpsupport_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon_menuSupport_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\popUp\popup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\loginHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon_manage_character_on.png" />
+    <Resource Include="Resources\icon_menuExit_on.png" />
+    <Resource Include="Resources\icon_menuSettings_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\separator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\play_disabled.png" />
+    <Resource Include="Resources\play_normal.png" />
+    <Resource Include="Resources\play_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menu_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\charactersForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logoBtn_hover.png" />
+    <Resource Include="Resources\logoBtn_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo_spinner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\itemBtn_hover.png" />
+    <Resource Include="Resources\itemBtn_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\reloadIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\main_bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\update_img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\news_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon_general_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\nostale_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\reg_hover.png" />
+    <Resource Include="Resources\reg_noactive.png" />
+    <Resource Include="Resources\reg_normal.png" />
+    <Resource Include="Resources\reg_press.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NostaleRun.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo_game.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
